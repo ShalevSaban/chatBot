@@ -2,6 +2,7 @@ package com.handson.chatbot.controller;
 
 
 
+import com.handson.chatbot.service.ChuckNorrisService;
 import com.handson.chatbot.service.ImdbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,9 +21,18 @@ public class BotController {
 
     @Autowired
     ImdbService imdbService;
+    @Autowired
+    ChuckNorrisService chuckJokes;
 
     @RequestMapping(value = "/imdb", method = RequestMethod.GET)
     public ResponseEntity<?> getTitle(@RequestParam String keyword) throws IOException {
         return new ResponseEntity<>(imdbService.searchTitles(keyword), HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/jokes", method = RequestMethod.GET)
+    public ResponseEntity<?> getJoke(@RequestParam String keyword) throws IOException {
+        return new ResponseEntity<>(chuckJokes.searchJokesByQuery(keyword), HttpStatus.OK);
+    }
+
+
 }
