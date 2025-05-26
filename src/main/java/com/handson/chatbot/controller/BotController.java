@@ -1,7 +1,8 @@
 package com.handson.chatbot.controller;
 
 
-import com.handson.chatbot.service.AmazonService;
+
+import com.handson.chatbot.service.ImdbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,17 +11,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
+
 @RestController
 @
         RequestMapping("/bot")
 public class BotController {
 
     @Autowired
-    AmazonService amazonService;
+    ImdbService imdbService;
 
-    @RequestMapping(value = "/amazon", method = RequestMethod.GET)
-    public ResponseEntity<?> getProduct(@RequestParam String keyword)
-    {
-        return new ResponseEntity<>(amazonService.searchProducts(keyword), HttpStatus.OK);
+    @RequestMapping(value = "/imdb", method = RequestMethod.GET)
+    public ResponseEntity<?> getTitle(@RequestParam String keyword) throws IOException {
+        return new ResponseEntity<>(imdbService.searchTitles(keyword), HttpStatus.OK);
     }
 }
