@@ -5,6 +5,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class ChuckNorrisService {
@@ -25,6 +26,16 @@ public class ChuckNorrisService {
     public Joke getJokeById(String id) {
         String url = "https://api.chucknorris.io/jokes/" + id;
         return restTemplate.getForObject(url, Joke.class);
+    }
+
+    public String getRandomJokeString(String query) {
+        JokeSearchResponse response = searchJokesByQuery(query);
+        if (response != null && response.getResult() != null && !response.getResult().isEmpty()) {
+            Random random = new Random();
+            int index = random.nextInt(response.getResult().size());
+            return response.getResult().get(index).getValue(); // הנחה שהבדיחה נמצאת בשדה value
+        }
+        return "Not found";
     }
 
     static class JokeSearchResponse {

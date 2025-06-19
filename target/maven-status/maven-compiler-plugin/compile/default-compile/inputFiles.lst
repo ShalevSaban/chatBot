@@ -1,0 +1,6 @@
+/root/work/shalevs-chatbot/src/main/java/com/handson/chatbot/config/SwaggerConfig.java
+/root/work/shalevs-chatbot/src/main/java/com/handson/chatbot/config/RestConfig.java
+/root/work/shalevs-chatbot/src/main/java/com/handson/chatbot/controller/BotController.java
+/root/work/shalevs-chatbot/src/main/java/com/handson/chatbot/service/ChuckNorrisService.java
+/root/work/shalevs-chatbot/src/main/java/com/handson/chatbot/service/ImdbService.java
+/root/work/shalevs-chatbot/src/main/java/com/handson/chatbot/ChatbotApplication.java
